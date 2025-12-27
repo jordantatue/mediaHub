@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="À propos" description="Découvrez MediaHub, votre source d'information pour rester connecté à l'actualité.">
+  <div class="page-container">
+    <div class="container-narrow">
+      <h1 class="page-title">À propos de MediaHub</h1>
+
+      <section class="content-section">
+        <h2>Notre mission</h2>
+        <p>
+          MediaHub est une plateforme média moderne qui rassemble des articles de qualité
+          sur les sujets qui façonnent notre monde. Notre mission est de fournir une
+          information claire, accessible et pertinente à nos lecteurs.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Notre approche</h2>
+        <p>
+          Nous croyons en la puissance de l'information bien présentée. C'est pourquoi
+          nous sélectionnons soigneusement nos sources et organisons notre contenu pour
+          faciliter votre lecture et votre compréhension.
+        </p>
+        <p>
+          Notre plateforme utilise les dernières technologies web pour vous offrir
+          une expérience de lecture optimale, que vous soyez sur mobile, tablette ou ordinateur.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Notre équipe</h2>
+        <p>
+          Derrière MediaHub se trouve une équipe passionnée de journalistes, développeurs
+          et designers qui travaillent ensemble pour créer la meilleure expérience possible.
+          Nous sommes constamment à l'écoute de nos lecteurs pour améliorer notre service.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Contactez-nous</h2>
+        <p>
+          Vous avez des questions, des suggestions ou simplement envie d'échanger avec nous ?
+          N'hésitez pas à nous contacter via notre <a href="/contact">page de contact</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-2xl);
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .content-section {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .content-section h2 {
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .content-section p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .content-section a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+
+    .content-section h2 {
+      font-size: var(--text-xl);
+    }
+
+    .content-section p {
+      font-size: var(--text-base);
+    }
+  }
+</style>
