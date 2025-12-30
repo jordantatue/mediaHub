@@ -90,7 +90,7 @@ const heroImages = [
 
       <div class="row g-4">
         {sortedPosts.map((post) => (
-          <div class="col-12 col-md-6 col-lg-4">
+          <div class="col-12 col-md-6 col-lg-4" data-titre-article={post.data.title.toLowerCase()}>
             <ArticleCard
               title={post.data.title}
               date={post.data.date}
@@ -106,4 +106,32 @@ const heroImages = [
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      InitialiserRechercheArticles();
+    });
+
+    // Initialise les écouteurs de la barre de recherche pour filtrer les cartes côté client.
+    function InitialiserRechercheArticles() {
+      const champRecherche = document.querySelector('#recherche-articles');
+      if (!champRecherche) {
+        return;
+      }
+      const cartesArticles = document.querySelectorAll('[data-titre-article]');
+      champRecherche.addEventListener('input', () => {
+        FiltrerArticlesParTitre(champRecherche.value, cartesArticles);
+      });
+    }
+
+    // Filtre les cartes selon le texte saisi afin de masquer celles qui ne correspondent pas au titre recherché.
+    function FiltrerArticlesParTitre(texteRecherche, cartesArticles) {
+      const termeNormalise = texteRecherche.trim().toLowerCase();
+      cartesArticles.forEach((carte) => {
+        const titreCarte = carte.dataset.titreArticle ?? '';
+        const doitMasquer = termeNormalise !== '' && !titreCarte.includes(termeNormalise);
+        carte.classList.toggle('d-none', doitMasquer);
+      });
+    }
+  </script>
 </Layout>

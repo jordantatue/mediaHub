@@ -5,36 +5,51 @@ const { pathname } = Astro.url;
 ---
 
 <header class="sticky-top bg-white border-bottom">
-  <nav class="navbar navbar-expand-md navbar-light container py-2" data-bs-theme="light">
-    <a href="/" class="navbar-brand fw-bold text-primary">
-      {SITE_CONFIG.title}
-    </a>
+  <nav class="navbar navbar-expand-md navbar-light bg-white" data-bs-theme="light">
+    <div class="container d-flex flex-wrap flex-md-nowrap align-items-center gap-3 py-2">
+      <a href="/" class="navbar-brand fw-bold text-primary me-3">
+        {SITE_CONFIG.title}
+      </a>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mainNav"
-      aria-controls="mainNav"
-      aria-expanded="false"
-      aria-label="Basculer la navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <form class="order-2 order-md-2 my-2 my-md-0 flex-grow-1" role="search">
+        <label for="recherche-articles" class="visually-hidden">Rechercher un article par titre</label>
+        <div class="mx-auto w-100 w-md-75 w-lg-50">
+          <input
+            type="search"
+            id="recherche-articles"
+            class="form-control text-center text-md-start w-100"
+            placeholder="Rechercher un article par titre"
+            aria-label="Rechercher un article par titre"
+          />
+        </div>
+      </form>
 
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ms-auto gap-2">
-        {SITE_CONFIG.navigation.map((item) => (
-          <li class="nav-item">
-            <a
-              href={item.href}
-              class:list={['nav-link', { active: pathname === item.href }]}
-            >
-              {item.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <button
+        class="navbar-toggler order-3 ms-md-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Basculer la navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-4" id="mainNav">
+        <ul class="navbar-nav ms-md-auto gap-2">
+          {SITE_CONFIG.navigation.map((item) => (
+            <li class="nav-item">
+              <a
+                href={item.href}
+                class:list={['nav-link', { active: pathname === item.href }]}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
