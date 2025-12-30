@@ -1,266 +1,28 @@
 /*
- * Variables CSS globales
- * Définit les couleurs, typographie et espacements du site
+ * Overrides Bootstrap pour une base simple et coherent.
  */
 :root {
-  /* Palette de couleurs */
-  --color-primary: #2563eb;
-  --color-primary-dark: #1e40af;
-  --color-secondary: #0891b2;
-  --color-accent: #0ea5e9;
-
-  /* Couleurs neutres */
-  --color-text: #1f2937;
-  --color-text-light: #6b7280;
-  --color-border: #e5e7eb;
-  --color-bg: #ffffff;
-  --color-bg-alt: #f9fafb;
-  --color-bg-hover: #f3f4f6;
-
-  /* Typographie */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'Courier New', Courier, monospace;
-
-  /* Tailles de police */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-
-  /* Espacements */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 0.75rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
-
-  /* Layout */
-  --max-width: 1200px;
-  --max-width-narrow: 800px;
-  --border-radius: 0.5rem;
-  --border-radius-lg: 0.75rem;
-
-  /* Transitions */
-  --transition: all 0.2s ease;
-}
-
-/*
- * Reset et styles de base
- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+  --bs-primary: #2563eb;
+  --bs-secondary: #0891b2;
+  --bs-body-color: #1f2937;
+  --bs-body-bg: #ffffff;
+  --bs-body-font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif;
+  --bs-headings-font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  --bs-link-color: #2563eb;
+  --bs-link-hover-color: #1e40af;
 }
 
 body {
-  font-family: var(--font-sans);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--bs-body-font-family);
 }
 
-/*
- * Typographie
- */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-md);
-  color: var(--color-text);
-}
-
-h1 { font-size: var(--text-4xl); }
-h2 { font-size: var(--text-3xl); }
-h3 { font-size: var(--text-2xl); }
-h4 { font-size: var(--text-xl); }
-h5 { font-size: var(--text-lg); }
-h6 { font-size: var(--text-base); }
-
-p {
-  margin-bottom: var(--spacing-md);
-  line-height: 1.7;
-}
-
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
+a,
 a:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/*
- * Listes
- */
-ul, ol {
-  margin-bottom: var(--spacing-md);
-  padding-left: var(--spacing-lg);
-}
-
-li {
-  margin-bottom: var(--spacing-xs);
-}
-
-/*
- * Images
- */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-/*
- * Code
- */
-code, pre {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-}
-
-code {
-  background-color: var(--color-bg-alt);
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
-  color: var(--color-primary-dark);
-}
-
-pre {
-  background-color: var(--color-bg-alt);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius);
-  overflow-x: auto;
-  margin-bottom: var(--spacing-md);
-}
-
-pre code {
-  background-color: transparent;
-  padding: 0;
-}
-
-/*
- * Boutons
- */
-.btn {
-  display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: var(--text-base);
-  font-weight: 500;
-  text-align: center;
-  text-decoration: none;
-  border-radius: var(--border-radius);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-primary);
-  color: white;
-  text-decoration: none;
-}
-
-/*
- * Container
- */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-}
-
-.container-narrow {
-  max-width: var(--max-width-narrow);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-}
-
-/*
- * Grille d'articles
- */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-2xl);
-}
-
-/*
- * Utilitaires
- */
-.text-center {
-  text-align: center;
-}
-
-.text-muted {
-  color: var(--color-text-light);
-}
-
-.mb-0 { margin-bottom: 0; }
-.mb-xs { margin-bottom: var(--spacing-xs); }
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
-.mb-lg { margin-bottom: var(--spacing-lg); }
-.mb-xl { margin-bottom: var(--spacing-xl); }
-.mb-2xl { margin-bottom: var(--spacing-2xl); }
-
-.mt-0 { margin-top: 0; }
-.mt-xs { margin-top: var(--spacing-xs); }
-.mt-sm { margin-top: var(--spacing-sm); }
-.mt-md { margin-top: var(--spacing-md); }
-.mt-lg { margin-top: var(--spacing-lg); }
-.mt-xl { margin-top: var(--spacing-xl); }
-.mt-2xl { margin-top: var(--spacing-2xl); }
-
-/*
- * Responsive
- */
-@media (max-width: 768px) {
-  :root {
-    --text-4xl: 1.875rem;
-    --text-3xl: 1.5rem;
-    --text-2xl: 1.25rem;
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
 }

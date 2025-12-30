@@ -4,6 +4,8 @@ date: 2024-01-15
 category: "Technologie"
 excerpt: "Comment l'IA révolutionne les méthodes d'apprentissage et personnalise l'expérience éducative pour chaque élève."
 source: "TechVision"
+image: "/images/posts/ia-education.jpg"
+imageAlt: "Une salle de classe moderne avec des outils numériques"
 ---
 
 L'intelligence artificielle n'est plus une technologie futuriste, elle est déjà présente dans nos salles de classe et transforme radicalement la façon dont nous enseignons et apprenons.
@@ -11,6 +13,8 @@ L'intelligence artificielle n'est plus une technologie futuriste, elle est déj�
 ## Une personnalisation sans précédent
 
 Les systèmes d'IA permettent aujourd'hui d'adapter le contenu pédagogique au rythme et au style d'apprentissage de chaque élève. Les plateformes éducatives intelligentes analysent les performances en temps réel et ajustent automatiquement la difficulté des exercices.
+
+![Des étudiants interagissent avec des outils numériques en classe](/images/posts/inline/ia-classe.jpg)
 
 Cette personnalisation était impossible à grande échelle avec les méthodes traditionnelles. Un enseignant peut difficilement adapter son cours à 30 élèves différents simultanément, mais l'IA le peut.
 

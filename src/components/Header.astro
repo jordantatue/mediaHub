@@ -4,16 +4,28 @@ import { SITE_CONFIG } from '../config';
 const { pathname } = Astro.url;
 ---
 
-<header class="site-header">
-  <nav class="container">
-    <div class="nav-wrapper">
-      <a href="/" class="logo">
-        <span class="logo-text">{SITE_CONFIG.title}</span>
-      </a>
+<header class="sticky-top bg-white border-bottom">
+  <nav class="navbar navbar-expand-md navbar-light container py-2" data-bs-theme="light">
+    <a href="/" class="navbar-brand fw-bold text-primary">
+      {SITE_CONFIG.title}
+    </a>
 
-      <ul class="nav-links">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNav"
+      aria-controls="mainNav"
+      aria-expanded="false"
+      aria-label="Basculer la navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto gap-2">
         {SITE_CONFIG.navigation.map((item) => (
-          <li>
+          <li class="nav-item">
             <a
               href={item.href}
               class:list={['nav-link', { active: pathname === item.href }]}
@@ -26,83 +38,3 @@ const { pathname } = Astro.url;
     </div>
   </nav>
 </header>
-
-<style>
-  .site-header {
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-
-  .nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-md) 0;
-  }
-
-  .logo {
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: var(--transition);
-  }
-
-  .logo:hover {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-
-  .logo-text {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: var(--spacing-lg);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-link {
-    color: var(--color-text-light);
-    font-weight: 500;
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-  }
-
-  .nav-link:hover {
-    color: var(--color-primary);
-    background-color: var(--color-bg-hover);
-    text-decoration: none;
-  }
-
-  .nav-link.active {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .nav-wrapper {
-      flex-direction: column;
-      gap: var(--spacing-md);
-    }
-
-    .nav-links {
-      gap: var(--spacing-md);
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  }
-</style>

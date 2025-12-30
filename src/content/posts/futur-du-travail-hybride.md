@@ -4,6 +4,8 @@ date: 2024-01-10
 category: "Société"
 excerpt: "Le télétravail s'est imposé, mais comment les entreprises réinventent-elles l'organisation du travail pour allier productivité et bien-être ?"
 source: "WorkTrends"
+image: "/images/posts/futur-travail.jpg"
+imageAlt: "Un espace de travail hybride avec ordinateurs et collaboration"
 ---
 
 Le travail hybride n'est plus une tendance passagère mais bien le nouveau standard. Comment les organisations s'adaptent-elles à cette révolution ?
@@ -11,6 +13,8 @@ Le travail hybride n'est plus une tendance passagère mais bien le nouveau stand
 ## La fin du bureau traditionnel
 
 Les bureaux tels que nous les connaissions appartiennent au passé. Les espaces de travail modernes privilégient la flexibilité et la collaboration.
+
+![Une équipe se réunit dans un espace de travail flexible](/images/posts/inline/travail-equipe.jpg)
 
 Les open spaces cèdent la place à des aménagements modulables : espaces de réunion informels, zones de concentration, salles de créativité. Chaque zone répond à un besoin spécifique.
 

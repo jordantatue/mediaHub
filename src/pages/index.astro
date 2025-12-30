@@ -5,84 +5,105 @@ import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const heroImages = [
+  {
+    src: '/images/hero/hero-architecture.jpg',
+    alt: 'Perspective architecturale moderne et lumineuse',
+  },
+  {
+    src: '/images/hero/hero-technology.jpg',
+    alt: 'Ambiance technologique avec lumière bleutée',
+  },
+  {
+    src: '/images/hero/hero-culture.jpg',
+    alt: 'Scène culturelle immersive et chaleureuse',
+  },
+  {
+    src: '/images/hero/hero-travel.jpg',
+    alt: 'Paysage de voyage inspirant au lever du jour',
+  },
+];
 ---
 
 <Layout>
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Bienvenue sur MediaHub</h1>
-      <p class="hero-description">
-        Découvrez les dernières actualités et articles sur les sujets qui vous passionnent.
-        Restez informé avec notre contenu de qualité.
-      </p>
+  <section class="mb-5">
+    <div
+      id="heroCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+      data-bs-interval="5500"
+    >
+      <div class="carousel-indicators">
+        {heroImages.map((_, index) => (
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to={index}
+            class:list={[{ active: index === 0 }]}
+            aria-current={index === 0 ? 'true' : undefined}
+            aria-label={`Slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      <div class="carousel-inner">
+        {heroImages.map((image, index) => (
+          <div class:list={['carousel-item position-relative', { active: index === 0 }]}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="d-block w-100"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 pe-none"></div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-center p-4 z-2">
+              <span class="badge text-bg-primary text-uppercase mb-3">Bienvenue</span>
+              <h1 class="display-4 fw-bold text-white mb-3">Bienvenue sur MediaHub</h1>
+              <p class="lead text-white mb-4 w-75 mx-auto">
+                Découvrez les dernières actualités et articles sur les sujets qui vous passionnent.
+                Restez informé avec notre contenu de qualité.
+              </p>
+              <a href="#dernieres-articles" class="btn btn-light btn-sm px-3 py-2">
+                Découvrir les articles
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Suivant</span>
+      </button>
     </div>
   </section>
 
-  <section class="articles-section">
+  <section class="articles-section py-5">
     <div class="container">
-      <h2 class="section-title">Derniers articles</h2>
+      <h2 id="dernieres-articles" class="mb-4">Derniers articles</h2>
 
-      <div class="articles-grid">
+      <div class="row g-4">
         {sortedPosts.map((post) => (
-          <ArticleCard
-            title={post.data.title}
-            date={post.data.date}
-            category={post.data.category}
-            excerpt={post.data.excerpt}
-            source={post.data.source}
-            slug={post.slug}
-          />
+          <div class="col-12 col-md-6 col-lg-4">
+            <ArticleCard
+              title={post.data.title}
+              date={post.data.date}
+              category={post.data.category}
+              excerpt={post.data.excerpt}
+              source={post.data.source}
+              slug={post.slug}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+            />
+          </div>
         ))}
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(8, 145, 178, 0.05) 100%);
-    padding: var(--spacing-3xl) 0;
-    margin-bottom: var(--spacing-2xl);
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-light);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  .articles-section {
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .section-title {
-    margin-bottom: var(--spacing-xl);
-    font-size: var(--text-3xl);
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .hero-title {
-      font-size: var(--text-3xl);
-    }
-
-    .hero-description {
-      font-size: var(--text-base);
-    }
-  }
-</style>
