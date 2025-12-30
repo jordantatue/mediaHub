@@ -3,223 +3,89 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Newsletter" description="Inscrivez-vous à notre newsletter pour recevoir les derniers articles directement dans votre boîte mail.">
-  <div class="page-container">
-    <div class="container-narrow">
-      <h1 class="page-title">Abonnez-vous à notre newsletter</h1>
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+          <h1 class="text-center mb-4">Abonnez-vous à notre newsletter</h1>
 
-      <div class="newsletter-intro">
-        <p>
-          Recevez chaque semaine une sélection des meilleurs articles directement dans votre boîte mail.
-          Restez informé sans effort.
-        </p>
-      </div>
+          <p class="text-center fs-5 text-muted mb-5">
+            Recevez chaque semaine une sélection des meilleurs articles directement dans votre boîte mail.
+            Restez informé sans effort.
+          </p>
 
-      <div class="newsletter-card">
-        <form class="newsletter-form" method="post" action="/api/subscribe">
-          <h2>Inscription gratuite</h2>
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <form method="post" action="/api/subscribe">
+                <h2 class="h4 text-primary mb-4">Inscription gratuite</h2>
 
-          <div class="form-group">
-            <label for="name">Nom</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Votre nom"
-              required
-            />
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nom</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="Votre nom"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="votre@email.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" name="consent" id="consent" required />
+                  <label class="form-check-label" for="consent">
+                    J'accepte de recevoir la newsletter de MediaHub et j'ai lu la
+                    <a class="text-primary text-decoration-none" href="/contact">politique de confidentialité</a>.
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                  S'inscrire à la newsletter
+                </button>
+              </form>
+
+              <div class="border-top pt-4 mt-4">
+                <h3 class="h6 text-primary mb-3">Ce que vous recevrez :</h3>
+                <ul class="list-unstyled d-grid gap-2 mb-0">
+                  <li class="d-flex gap-2">
+                    <span class="text-primary fw-bold">✓</span>
+                    <span>Une sélection hebdomadaire des meilleurs articles</span>
+                  </li>
+                  <li class="d-flex gap-2">
+                    <span class="text-primary fw-bold">✓</span>
+                    <span>Des analyses approfondies sur les sujets d'actualité</span>
+                  </li>
+                  <li class="d-flex gap-2">
+                    <span class="text-primary fw-bold">✓</span>
+                    <span>Des contenus exclusifs réservés aux abonnés</span>
+                  </li>
+                  <li class="d-flex gap-2">
+                    <span class="text-primary fw-bold">✓</span>
+                    <span>Aucun spam, désinscription facile à tout moment</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="votre@email.com"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label class="checkbox-label">
-              <input type="checkbox" name="consent" required />
-              <span>
-                J'accepte de recevoir la newsletter de MediaHub et j'ai lu la
-                <a href="/contact">politique de confidentialité</a>.
-              </span>
-            </label>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-full">
-            S'inscrire à la newsletter
-          </button>
-        </form>
-
-        <div class="newsletter-benefits">
-          <h3>Ce que vous recevrez :</h3>
-          <ul>
-            <li>Une sélection hebdomadaire des meilleurs articles</li>
-            <li>Des analyses approfondies sur les sujets d'actualité</li>
-            <li>Des contenus exclusifs réservés aux abonnés</li>
-            <li>Aucun spam, désinscription facile à tout moment</li>
-          </ul>
+          <p class="text-center text-muted small mb-0">
+            Nous respectons votre vie privée. Vos données ne seront jamais partagées
+            avec des tiers. Consultez notre <a class="text-primary text-decoration-none" href="/contact">politique de confidentialité</a>.
+          </p>
         </div>
       </div>
-
-      <div class="newsletter-footer">
-        <p class="text-muted">
-          Nous respectons votre vie privée. Vos données ne seront jamais partagées
-          avec des tiers. Consultez notre <a href="/contact">politique de confidentialité</a>.
-        </p>
-      </div>
     </div>
-  </div>
+  </section>
 </Layout>
-
-<style>
-  .page-container {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .page-title {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .newsletter-intro {
-    text-align: center;
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .newsletter-intro p {
-    font-size: var(--text-lg);
-    color: var(--color-text-light);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .newsletter-card {
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-2xl);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .newsletter-form h2 {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-primary);
-  }
-
-  .form-group {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  .form-group input[type="text"],
-  .form-group input[type="email"] {
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--text-base);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-  }
-
-  .form-group input[type="text"]:focus,
-  .form-group input[type="email"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .checkbox-label {
-    display: flex;
-    gap: var(--spacing-sm);
-    align-items: flex-start;
-    font-weight: normal;
-    cursor: pointer;
-  }
-
-  .checkbox-label input[type="checkbox"] {
-    margin-top: 4px;
-    cursor: pointer;
-  }
-
-  .checkbox-label span {
-    font-size: var(--text-sm);
-    color: var(--color-text-light);
-  }
-
-  .btn-full {
-    width: 100%;
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-size: var(--text-lg);
-  }
-
-  .newsletter-benefits {
-    margin-top: var(--spacing-2xl);
-    padding-top: var(--spacing-2xl);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .newsletter-benefits h3 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-primary);
-  }
-
-  .newsletter-benefits ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .newsletter-benefits li {
-    padding-left: var(--spacing-lg);
-    margin-bottom: var(--spacing-sm);
-    position: relative;
-    color: var(--color-text);
-  }
-
-  .newsletter-benefits li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: bold;
-  }
-
-  .newsletter-footer {
-    text-align: center;
-  }
-
-  .newsletter-footer p {
-    font-size: var(--text-sm);
-  }
-
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: var(--text-3xl);
-    }
-
-    .newsletter-card {
-      padding: var(--spacing-lg);
-    }
-
-    .newsletter-intro p {
-      font-size: var(--text-base);
-    }
-  }
-</style>

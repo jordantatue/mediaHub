@@ -4,6 +4,8 @@ date: 2024-01-08
 category: "Lifestyle"
 excerpt: "De la ferme à la table, découvrez comment la cuisine durable révolutionne notre façon de consommer et de nous nourrir."
 source: "FoodMag"
+image: "/images/posts/cuisine-durable.jpg"
+imageAlt: "Ingrédients frais et locaux sur un plan de travail"
 ---
 
 La cuisine durable n'est plus réservée aux restaurants étoilés ou aux militants écologistes. Elle s'invite dans nos cuisines et transforme nos habitudes alimentaires.
@@ -13,6 +15,8 @@ La cuisine durable n'est plus réservée aux restaurants étoilés ou aux milita
 Acheter local n'a jamais été aussi populaire. Les AMAP, marchés de producteurs et drives fermiers se multiplient.
 
 Cette proximité garantit fraîcheur, qualité et traçabilité. Elle soutient également l'économie locale et réduit l'empreinte carbone liée au transport.
+
+![Des légumes frais et locaux pour une cuisine durable](/images/posts/inline/cuisine-legumes.jpg)
 
 ## Le zéro déchet en cuisine
 

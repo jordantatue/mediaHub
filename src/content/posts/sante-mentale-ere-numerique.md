@@ -4,9 +4,13 @@ date: 2024-01-05
 category: "Santé"
 excerpt: "Entre hyperconnexion et bien-être, comment préserver sa santé mentale dans un monde numérique omniprésent ?"
 source: "WellnessToday"
+image: "/images/posts/sante-mentale.jpg"
+imageAlt: "Moment de calme et de respiration pour préserver la santé mentale"
 ---
 
 Notre relation au numérique impacte profondément notre santé mentale. Apprendre à naviguer dans cet environnement est devenu essentiel.
+
+![Prendre une pause numérique avec un moment de respiration](/images/posts/inline/sante-meditation.jpg)
 
 ## L'hyperconnexion et ses effets
 

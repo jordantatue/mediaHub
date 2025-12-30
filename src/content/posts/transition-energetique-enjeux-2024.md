@@ -4,6 +4,8 @@ date: 2024-01-12
 category: "Environnement"
 excerpt: "Face au changement climatique, la transition vers les énergies renouvelables s'accélère. Quels sont les défis et opportunités pour cette année ?"
 source: "EcoDaily"
+image: "/images/posts/transition-energetique.jpg"
+imageAlt: "Paysage énergétique avec technologies renouvelables"
 ---
 
 La transition énergétique n'est plus une option mais une nécessité urgente. En 2024, les enjeux sont plus critiques que jamais.
@@ -21,6 +23,8 @@ Le solaire et l'éolien connaissent une croissance exponentielle. Les coûts de 
 ### Solaire photovoltaïque
 
 Les panneaux solaires sont désormais accessibles à un large public. Les innovations en matière de stockage permettent de pallier l'intermittence de cette source d'énergie.
+
+![Panneaux solaires alimentant un réseau énergétique moderne](/images/posts/inline/energie-solaire.jpg)
 
 ### Éolien offshore
 

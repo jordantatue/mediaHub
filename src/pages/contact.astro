@@ -4,271 +4,140 @@ import { SITE_CONFIG } from '../config';
 ---
 
 <Layout title="Contact & Mentions légales" description="Contactez-nous et consultez nos mentions légales.">
-  <div class="page-container">
-    <div class="container-narrow">
-      <h1 class="page-title">Contact & Mentions légales</h1>
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
+          <h1 class="text-center mb-5">Contact & Mentions légales</h1>
 
-      <section class="content-section">
-        <h2>Contactez-nous</h2>
-        <p>
-          Vous avez une question, une suggestion ou souhaitez collaborer avec nous ?
-          N'hésitez pas à nous contacter.
-        </p>
+          <section class="mb-5">
+            <h2 class="h4 text-primary mb-3">Contactez-nous</h2>
+            <p class="fs-5">
+              Vous avez une question, une suggestion ou souhaitez collaborer avec nous ?
+              N'hésitez pas à nous contacter.
+            </p>
 
-        <div class="contact-info">
-          <div class="contact-item">
-            <strong>Email :</strong>
-            <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a>
-          </div>
+            <div class="p-4 bg-light rounded-3 mb-4">
+              <div class="mb-3">
+                <strong class="d-block mb-1">Email :</strong>
+                <a class="text-primary text-decoration-none" href={`mailto:${SITE_CONFIG.email}`}>
+                  {SITE_CONFIG.email}
+                </a>
+              </div>
 
-          <div class="contact-item">
-            <strong>Réseaux sociaux :</strong>
-            <div class="social-links">
-              <a href={SITE_CONFIG.social.twitter} target="_blank" rel="noopener">Twitter</a>
-              <a href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-              <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener">GitHub</a>
+              <div>
+                <strong class="d-block mb-2">Réseaux sociaux :</strong>
+                <div class="d-flex gap-3 flex-wrap">
+                  <a class="text-primary text-decoration-none" href={SITE_CONFIG.social.twitter} target="_blank" rel="noopener">Twitter</a>
+                  <a class="text-primary text-decoration-none" href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+                  <a class="text-primary text-decoration-none" href={SITE_CONFIG.social.github} target="_blank" rel="noopener">GitHub</a>
+                </div>
+              </div>
             </div>
-          </div>
+
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5 text-primary mb-4">Envoyez-nous un message</h3>
+                <form method="post" action="/api/contact">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Nom</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="form-control"
+                      placeholder="Votre nom"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      placeholder="votre@email.com"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="subject" class="form-label">Sujet</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="form-control"
+                      placeholder="Objet de votre message"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      class="form-control"
+                      placeholder="Votre message..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    Envoyer le message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="h4 text-primary mb-3">Mentions légales</h2>
+
+            <h3 class="h6 fw-semibold mt-4">Éditeur du site</h3>
+            <p>
+              <strong>{SITE_CONFIG.title}</strong><br />
+              Email : {SITE_CONFIG.email}
+            </p>
+
+            <h3 class="h6 fw-semibold mt-4">Hébergement</h3>
+            <p>
+              Ce site est hébergé par un service d'hébergement web professionnel.
+            </p>
+
+            <h3 class="h6 fw-semibold mt-4">Propriété intellectuelle</h3>
+            <p>
+              L'ensemble du contenu de ce site (textes, images, vidéos) est protégé par
+              le droit d'auteur. Toute reproduction, même partielle, est interdite sans
+              autorisation préalable.
+            </p>
+
+            <h3 class="h6 fw-semibold mt-4">Protection des données personnelles</h3>
+            <p>
+              Conformément au RGPD, vous disposez d'un droit d'accès, de rectification
+              et de suppression de vos données personnelles. Pour exercer ce droit,
+              contactez-nous à l'adresse : {SITE_CONFIG.email}
+            </p>
+
+            <h3 class="h6 fw-semibold mt-4">Cookies</h3>
+            <p>
+              Ce site utilise des cookies pour améliorer votre expérience de navigation.
+              En poursuivant votre navigation, vous acceptez l'utilisation de cookies.
+            </p>
+
+            <h3 class="h6 fw-semibold mt-4">Responsabilité</h3>
+            <p>
+              Les informations présentes sur ce site sont fournies à titre indicatif.
+              {SITE_CONFIG.title} ne saurait être tenu responsable des erreurs ou omissions
+              dans le contenu publié.
+            </p>
+          </section>
         </div>
-
-        <div class="contact-form-card">
-          <h3>Envoyez-nous un message</h3>
-          <form class="contact-form" method="post" action="/api/contact">
-            <div class="form-group">
-              <label for="name">Nom</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Votre nom"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="votre@email.com"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Sujet</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="Objet de votre message"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                placeholder="Votre message..."
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-              Envoyer le message
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Mentions légales</h2>
-
-        <h3>Éditeur du site</h3>
-        <p>
-          <strong>{SITE_CONFIG.title}</strong><br />
-          Email : {SITE_CONFIG.email}
-        </p>
-
-        <h3>Hébergement</h3>
-        <p>
-          Ce site est hébergé par un service d'hébergement web professionnel.
-        </p>
-
-        <h3>Propriété intellectuelle</h3>
-        <p>
-          L'ensemble du contenu de ce site (textes, images, vidéos) est protégé par
-          le droit d'auteur. Toute reproduction, même partielle, est interdite sans
-          autorisation préalable.
-        </p>
-
-        <h3>Protection des données personnelles</h3>
-        <p>
-          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification
-          et de suppression de vos données personnelles. Pour exercer ce droit,
-          contactez-nous à l'adresse : {SITE_CONFIG.email}
-        </p>
-
-        <h3>Cookies</h3>
-        <p>
-          Ce site utilise des cookies pour améliorer votre expérience de navigation.
-          En poursuivant votre navigation, vous acceptez l'utilisation de cookies.
-        </p>
-
-        <h3>Responsabilité</h3>
-        <p>
-          Les informations présentes sur ce site sont fournies à titre indicatif.
-          {SITE_CONFIG.title} ne saurait être tenu responsable des erreurs ou omissions
-          dans le contenu publié.
-        </p>
-      </section>
+      </div>
     </div>
-  </div>
+  </section>
 </Layout>
-
-<style>
-  .page-container {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .page-title {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--spacing-2xl);
-    text-align: center;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .content-section {
-    margin-bottom: var(--spacing-3xl);
-  }
-
-  .content-section h2 {
-    font-size: var(--text-2xl);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .content-section h3 {
-    font-size: var(--text-xl);
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
-  }
-
-  .content-section p {
-    font-size: var(--text-lg);
-    line-height: 1.8;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .contact-info {
-    background-color: var(--color-bg-alt);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .contact-item {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .contact-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .contact-item strong {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text);
-  }
-
-  .contact-item a {
-    color: var(--color-primary);
-    font-weight: 500;
-  }
-
-  .social-links {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-  }
-
-  .contact-form-card {
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-xl);
-    margin-top: var(--spacing-xl);
-  }
-
-  .contact-form-card h3 {
-    font-size: var(--text-xl);
-    margin-top: 0;
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-primary);
-  }
-
-  .form-group {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group textarea {
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--text-base);
-    font-family: inherit;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-  }
-
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: var(--text-3xl);
-    }
-
-    .content-section h2 {
-      font-size: var(--text-xl);
-    }
-
-    .content-section h3 {
-      font-size: var(--text-lg);
-    }
-
-    .content-section p {
-      font-size: var(--text-base);
-    }
-
-    .contact-form-card {
-      padding: var(--spacing-lg);
-    }
-  }
-</style>
