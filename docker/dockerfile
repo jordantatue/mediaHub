@@ -1,0 +1,27 @@
+FROM n8nio/n8n:latest
+
+# Passer en root pour installer les dépendances système
+USER root
+
+RUN wget https://gitlab.alpinelinux.org/api/v4/projects/5/packages/generic//v2.14.0/x86_64/apk.static && \
+    chmod +x apk.static && \
+    ./apk.static -X http://dl-cdn.alpinelinux.org/alpine/latest-stable/main -U --allow-untrusted add apk-tools && \
+    rm apk.static
+
+# Outils système + yt-dlp + ffmpeg (indispensable pour YouTube)
+RUN apk update && apk add --no-cache \
+    bash \
+    curl \
+    ffmpeg \
+    python3 \
+    py3-pip \
+    yt-dlp
+
+# Dossier de stockage local des vidéos
+RUN mkdir -p /data/videos && chown -R node:node /data
+
+# Revenir à l'utilisateur sécurisé n8n
+USER node
+
+# Répertoire de travail
+WORKDIR /home/node

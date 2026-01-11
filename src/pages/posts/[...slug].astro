@@ -5,10 +5,7 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   // Point d'entree Astro pour generer les routes statiques (nom impose par Astro).
   const posts = await getCollection('posts');
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
 }
 
 const { post } = Astro.props;
@@ -22,10 +19,14 @@ const FormaterDateArticle = (date: Date) =>
     day: 'numeric',
   }).format(date);
 
-const dateFormatee = FormaterDateArticle(post.data.date);
 ---
 
-<Layout title={post.data.title} description={post.data.excerpt}>
+<Layout
+  title={post.data.title}
+  description={post.data.metaDescription}
+  keywords={post.data.keywords}
+  image={post.data.image}
+>
   <article class="py-5">
     <div class="container">
       <div class="row justify-content-center">
@@ -33,13 +34,15 @@ const dateFormatee = FormaterDateArticle(post.data.date);
           <header class="mb-4">
             <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
               <span class="badge text-bg-primary text-uppercase">{post.data.category}</span>
-              <time class="text-muted" datetime={post.data.date.toISOString()}>
-                {dateFormatee}
+              <time class="text-muted small" datetime={post.data.date.toISOString()}>
+                {FormaterDateArticle(post.data.date)}
               </time>
+              <span class="text-muted small">Par {post.data.author}</span>
+              <span class="text-muted small">{post.data.readingTime}</span>
             </div>
 
-            <h1 class="display-5 fw-bold mb-3">{post.data.title}</h1>
-            <p class="lead text-muted mb-3">{post.data.excerpt}</p>
+            <h1 class="display-6 fw-bold mb-3">{post.data.title}</h1>
+            <p class="fs-5 text-muted mb-3">{post.data.subtitle}</p>
 
             <div class="text-muted small">
               <span class="fw-semibold text-primary">Source : {post.data.source}</span>
@@ -47,16 +50,19 @@ const dateFormatee = FormaterDateArticle(post.data.date);
           </header>
 
           <figure class="mb-5">
-            <img
-              src={post.data.image}
-              alt={post.data.imageAlt}
-              class="img-fluid w-100 rounded-3 shadow-sm"
-              loading="eager"
-              decoding="async"
-            />
+            <div class="rounded-3 shadow-sm overflow-hidden" style="height: 320px;">
+              <img
+                src={post.data.image}
+                alt={post.data.imageAlt}
+                class="w-100 h-100 object-fit-cover"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="text-muted small mt-2">{post.data.imageCaption}</figcaption>
           </figure>
 
-          <div class="typographie-article mb-5">
+          <div class="fs-6 lh-lg text-body mb-5" data-article-content>
             <Content />
           </div>
 
@@ -69,4 +75,28 @@ const dateFormatee = FormaterDateArticle(post.data.date);
       </div>
     </div>
   </article>
+
+  <script>
+    // Masque les illustrations suggérées n°1 dans le rendu article.
+    function MasquerIllustrationSuggereeNumeroUn() {
+      const contenu = document.querySelector('[data-article-content]');
+      if (!contenu) return;
+      contenu.querySelectorAll('p, li').forEach((bloc) => {
+        if (!/illustration suggérée n°1/i.test(bloc.textContent ?? '')) return;
+        const suivant = bloc.nextElementSibling;
+        bloc.remove();
+        if (suivant?.tagName === 'P' && suivant.querySelector('img') && !suivant.textContent?.trim()) {
+          suivant.remove();
+        }
+      });
+      contenu.querySelectorAll('p').forEach((bloc) => {
+        if (bloc.querySelectorAll('img').length !== 1 || bloc.textContent?.trim()) return;
+        const suivant = bloc.nextElementSibling;
+        if (/^H[1-6]$/.test(suivant?.tagName ?? '') && /sources?/i.test(suivant?.textContent ?? '')) {
+          bloc.remove();
+        }
+      });
+    }
+    MasquerIllustrationSuggereeNumeroUn();
+  </script>
 </Layout>

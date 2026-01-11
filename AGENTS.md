@@ -17,6 +17,12 @@ Ces conventions doivent être respectées pour toute évolution du projet.
 - Prioriser l'utilisation de Bootstrap plutôt que du CSS custom.
 - Résoudre si possible la dette technique CSS en traduisant vers Bootstrap sur les composants modifiés.
 
+## Optimisation du code
+
+- Supprimer le code superflu lors des modifications.
+- Viser le minimum de lignes tout en gardant les commentaires fonctionnels en français.
+- Réduire le CSS custom au profit des classes Bootstrap sur les composants touchés.
+
 ## Commentaires et nommage
 
 - Commenter les fonctions du code (techniques, rôle fonctionnel, interactions).

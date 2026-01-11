@@ -5,23 +5,21 @@ const { pathname } = Astro.url;
 ---
 
 <header class="sticky-top bg-white border-bottom">
-  <nav class="navbar navbar-expand-md navbar-light bg-white" data-bs-theme="light">
+  <nav class="navbar navbar-expand-md bg-white">
     <div class="container d-flex flex-wrap flex-md-nowrap align-items-center gap-3 py-2">
       <a href="/" class="navbar-brand fw-bold text-primary me-3">
         {SITE_CONFIG.title}
       </a>
 
-      <form class="order-2 order-md-2 my-2 my-md-0 flex-grow-1" role="search">
+      <form class="order-2 my-2 my-md-0 flex-grow-1" role="search">
         <label for="recherche-articles" class="visually-hidden">Rechercher un article par titre</label>
-        <div class="mx-auto w-100 w-md-75 w-lg-50">
-          <input
-            type="search"
-            id="recherche-articles"
-            class="form-control text-center text-md-start w-100"
-            placeholder="Rechercher un article par titre"
-            aria-label="Rechercher un article par titre"
-          />
-        </div>
+        <input
+          type="search"
+          id="recherche-articles"
+          class="form-control text-center text-md-start"
+          placeholder="Rechercher un article par titre"
+          aria-label="Rechercher un article par titre"
+        />
       </form>
 
       <button

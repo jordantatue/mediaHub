@@ -7,14 +7,19 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string[];
+  image?: string;
 }
 
 const {
   title = SITE_CONFIG.title,
-  description = SITE_CONFIG.description
+  description = SITE_CONFIG.description,
+  keywords,
+  image
 } = Astro.props;
 
 const pageTitle = title === SITE_CONFIG.title ? title : `${title} | ${SITE_CONFIG.title}`;
+const imageUrl = image ? new URL(image, Astro.url).toString() : undefined;
 ---
 
 <!doctype html>
@@ -32,10 +37,13 @@ const pageTitle = title === SITE_CONFIG.title ? title : `${title} | ${SITE_CONFI
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
+    {imageUrl ? <meta property="og:image" content={imageUrl} /> : null}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    {imageUrl ? <meta name="twitter:image" content={imageUrl} /> : null}
+    {keywords?.length ? <meta name="keywords" content={keywords.join(', ')} /> : null}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

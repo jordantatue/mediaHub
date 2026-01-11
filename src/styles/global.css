@@ -1,6 +1,4 @@
-/*
- * Overrides Bootstrap pour une base simple et coherent.
- */
+/* Variables Bootstrap + correctif responsive pour les images. */
 :root {
   --bs-primary: #2563eb;
   --bs-secondary: #0891b2;
@@ -12,65 +10,7 @@
   --bs-link-hover-color: #1e40af;
 }
 
-body {
-  font-family: var(--bs-body-font-family);
-}
-
-.typographie-article {
-  font-family: var(--bs-body-font-family);
-  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.12rem);
-  line-height: 1.75;
-  color: var(--bs-body-color);
-}
-
-.typographie-article p {
-  font-family: var(--bs-body-font-family);
-  font-size: inherit;
-  margin-bottom: 1.25rem;
-  color: #1c1a16;
-}
-
-.typographie-article h2,
-.typographie-article h3,
-.typographie-article h4 {
-  font-family: var(--bs-headings-font-family);
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  color: #111827;
-}
-
-.typographie-article h2 {
-  font-size: clamp(1.5rem, 1.1rem + 1vw, 1.9rem);
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.typographie-article h3 {
-  font-size: clamp(1.3rem, 1.05rem + 0.6vw, 1.5rem);
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.typographie-article h4 {
-  font-size: clamp(1.15rem, 1rem + 0.4vw, 1.3rem);
-  margin-top: 1.5rem;
-  margin-bottom: 0.6rem;
-  text-transform: none;
-}
-
-.typographie-article ul,
-.typographie-article ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-a,
-a:hover {
-  text-decoration: none;
-}
-
 img {
   max-width: 100%;
   height: auto;
-  display: block;
 }

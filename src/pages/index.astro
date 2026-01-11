@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('posts');
-const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = (await getCollection('posts')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const heroImages = [
   {
@@ -49,11 +48,14 @@ const heroImages = [
 
       <div class="carousel-inner">
         {heroImages.map((image, index) => (
-          <div class:list={['carousel-item position-relative', { active: index === 0 }]}>
+          <div
+            class:list={['carousel-item position-relative', { active: index === 0 }]}
+            style="height: 360px;"
+          >
             <img
               src={image.src}
               alt={image.alt}
-              class="d-block w-100"
+              class="d-block w-100 h-100 object-fit-cover"
               loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
             />
@@ -84,7 +86,7 @@ const heroImages = [
     </div>
   </section>
 
-  <section class="articles-section py-5">
+  <section class="py-5">
     <div class="container">
       <h2 id="dernieres-articles" class="mb-4">Derniers articles</h2>
 
@@ -108,9 +110,8 @@ const heroImages = [
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      InitialiserRechercheArticles();
-    });
+    // Lance l'initialisation une fois le DOM rendu (script en fin de page).
+    InitialiserRechercheArticles();
 
     // Initialise les écouteurs de la barre de recherche pour filtrer les cartes côté client.
     function InitialiserRechercheArticles() {
